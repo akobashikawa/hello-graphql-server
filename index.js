@@ -6,13 +6,14 @@ const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 
 const app = express();
+const SERVERNAME = process.env.SERVERNAME || '';
 
 const typeDefs = `
-  type Query { helloworld: String }
+  type Query { hello: String }
 `;
 
 const resolvers = {
-    Query: { helloworld: () => "Hello Apollo Server!" },
+    Query: { hello: () => `Hello from ${SERVERNAME} Server` },
 };
 
 const schema = makeExecutableSchema({
@@ -27,7 +28,7 @@ app.use('/graphql',
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Go to http://localhost:${PORT}/graphiql to run queries!`);
 });
