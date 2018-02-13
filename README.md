@@ -2,6 +2,12 @@
 
 Simple GraphQL server with Express and Apollo.
 
+## Use
+
+* `$ npm install`
+* `$ npm start`
+* http://localhost:3000/graphiql
+
 ## Env vars
 
 * PORT (default 3000)
